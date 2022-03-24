@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Git Clone') {
+            steps {
+                git branch: 'main', url: 'https://github.com/Shubham1996-aws/vuejs.git'
+            }
+        }
+        
+        stage('Copy Code to Dir') {
+            steps {
+                sh "cp -r $JENKINS_HOME/workspace/copy-code-dir/ /srv"
+            }
+        }
+        
+        stage('Clean Workspace') {
+            steps {
+                cleanWs()
+            }
+        }
+        
+        
+        
+        
+    }
+}
